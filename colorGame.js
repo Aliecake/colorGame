@@ -4,7 +4,9 @@ const squares = document.getElementsByClassName("square");
 let pickedColor = pickColor();
 const colorDisplay = document.getElementById("colorDisplayed");
 const messageResult = document.getElementById("result");
-const button = document.querySelector("button");
+const buttons = document.querySelectorAll("button");
+const easy = document.querySelector("#easyBtn");
+const hard = document.querySelector("#hardBtn");
 
 colorDisplay.textContent = pickedColor;
 for(let ii = 0; ii < squares.length; ii++) {
@@ -15,7 +17,7 @@ for(let ii = 0; ii < squares.length; ii++) {
 
         if (clickedColor === pickedColor) {
             messageResult.textContent = "Correct!";
-            button.textContent = "Try Again?";
+            buttons[0].textContent = "Play Again?";
             winColor(pickedColor);
         } else {
             messageResult.textContent = "Try Again!";
@@ -51,6 +53,7 @@ function winColor(winColor) {
         squares[jj].style.backgroundColor = winColor;
     }
 }
+//reset game
 function reset() {
     colors = randomColors(6);
     pickedColor = pickColor();
@@ -59,3 +62,32 @@ function reset() {
         squares[ii].style.backgroundColor = colors[ii];
     };
 }
+
+
+easy.addEventListener("click", () => {
+    colors = randomColors(3);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    easy.classList.add("selected");
+    hard.classList.remove("selected");
+    //display 3 new squares from colors
+    //removes last 3 squares
+    for(let mm = 0; mm < squares.length; mm++) {
+        if(mm >= 3){
+            document.querySelectorAll(".square")[mm].style.display = "none";
+        }
+        else {
+            squares[mm].style.backgroundColor = colors[mm];
+        }
+    }
+});
+hard.addEventListener("click", () => {
+    colors = randomColors(6);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    hard.classList.add("selected");
+    easy.classList.remove("selected");
+    for(let nn = 0; nn < colors.length; nn++){
+        document.querySelectorAll(".square")[nn].style.display = "block";
+    }
+});

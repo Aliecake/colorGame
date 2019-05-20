@@ -5,6 +5,7 @@ body {
 }
 h1 {
     text-align: center;
+    color: white;
 }
 #colorDisplayed {
     font-size: 22px;
@@ -36,6 +37,7 @@ button {
     margin: 0 auto;
     max-width: 600px;
 }
-h1 {
-    color: white;
+.selected {
+    background-color: rgb(100, 100, 255);
+    color: rgb(207, 207, 207);
 }
