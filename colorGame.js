@@ -30,22 +30,21 @@ function randomColors(n) {
     let arr = []
     //add n number of random colors to array
     for (let kk = 0; kk < n; kk++){
-        let num1 = randomNum();
-        let num2 = randomNum();
-        let num3 = randomNum();
-        arr.push(`rgb(${num1}, ${num2}, ${num3})`)
+        let red = randomNum();
+        let green = randomNum();
+        let blue = randomNum();
+        arr.push(`rgb(${red}, ${green}, ${blue})`)
     }
     return arr;
 }
 //randomize 0-255
 function randomNum() {
-    let min = Math.ceil(0);
-    let max = Math.floor(255);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (255 - 0 + 1)) + 0;
 }
 
 //changes color of all squares
 function winColor(winColor) {
+    document.querySelector("h1").style.backgroundColor = pickedColor;
     for (let jj = 0; jj < squares.length; jj++) {
         squares[jj].style.backgroundColor = winColor;
     }
