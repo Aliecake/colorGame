@@ -4,6 +4,7 @@ const squares = document.getElementsByClassName("square");
 let pickedColor = pickColor();
 const colorDisplay = document.getElementById("colorDisplayed");
 const messageResult = document.getElementById("result");
+const button = document.querySelector("button");
 
 colorDisplay.textContent = pickedColor;
 for(let ii = 0; ii < squares.length; ii++) {
@@ -14,6 +15,7 @@ for(let ii = 0; ii < squares.length; ii++) {
 
         if (clickedColor === pickedColor) {
             messageResult.textContent = "Correct!";
+            button.textContent = "Try Again?";
             winColor(pickedColor);
         } else {
             messageResult.textContent = "Try Again!";
