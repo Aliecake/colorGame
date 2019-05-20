@@ -3,15 +3,20 @@ body {
     background-color: rgb(44, 44, 44);
     color: white;
 }
+h1 {
+    text-align: center;
+}
 #colorDisplayed {
     font-size: 18px;
 }
+
 .square {
     width: 30%;
     background-color: rgb(133, 4, 133);
     padding-bottom: 30%;
     margin: 1.66%;
     float: left;
+    border-radius: 10%;
 }
 .container {
     margin: 0 auto;
