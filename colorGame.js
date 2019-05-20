@@ -1,9 +1,9 @@
 let colors = randomColors(6);
 
-let squares = document.getElementsByClassName("square");
+const squares = document.getElementsByClassName("square");
 let pickedColor = pickColor();
-let colorDisplay = document.getElementById("colorDisplayed");
-let messageResult = document.getElementById("result");
+const colorDisplay = document.getElementById("colorDisplayed");
+const messageResult = document.getElementById("result");
 
 colorDisplay.textContent = pickedColor;
 for(let ii = 0; ii < squares.length; ii++) {
@@ -48,4 +48,12 @@ function winColor(winColor) {
     for (let jj = 0; jj < squares.length; jj++) {
         squares[jj].style.backgroundColor = winColor;
     }
+}
+function reset() {
+    colors = randomColors(6);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    for(let ii = 0; ii < squares.length; ii++) {
+        squares[ii].style.backgroundColor = colors[ii];
+    };
 }

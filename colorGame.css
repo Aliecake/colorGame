@@ -10,7 +10,19 @@ h1 {
     font-size: 22px;
     font-weight: 800;
 }
-
+.navbar {
+    background-color: rgb(207, 207, 207);
+    color: rgb(100, 100, 255);
+    text-align: center;
+    padding: 10px;
+}
+.result {
+    padding: 15px;
+}
+button {
+    background-color: rgb(207, 207, 207);
+    border: none;
+}
 .square {
     width: 30%;
     background-color: rgb(133, 4, 133);
