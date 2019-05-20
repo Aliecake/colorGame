@@ -1,0 +1,22 @@
+
+body {
+    background-color: rgb(44, 44, 44);
+    color: white;
+}
+#colorDisplayed {
+    font-size: 18px;
+}
+.square {
+    width: 30%;
+    background-color: rgb(133, 4, 133);
+    padding-bottom: 30%;
+    margin: 1.66%;
+    float: left;
+}
+.container {
+    margin: 0 auto;
+    max-width: 600px;
+}
+h1 {
+    color: white;
+}
