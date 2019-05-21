@@ -30,7 +30,7 @@ function pickColor() {
     let random = Math.floor(Math.random() * colors.length);
     return colors[random]
 }
-function randomColors(n) {
+function randomColors(n = 6) {
     let arr = []
     //add n number of random colors to array
     for (let kk = 0; kk < n; kk++){
@@ -41,7 +41,7 @@ function randomColors(n) {
     }
     return arr;
 }
-//randomize 0-255
+
 function randomNum() {
     return Math.floor(Math.random() * (255 - 0 + 1)) + 0;
 }
@@ -61,7 +61,7 @@ function reset() {
         if (mode[hh].classList.contains("easy") && mode[hh].classList.contains("selected")) {
             colors = randomColors(3);
         } else if (mode[hh].classList.contains("hard") && mode[hh].classList.contains("selected")){
-            colors = randomColors(6);
+            colors = randomColors();
         }
         pickedColor = pickColor();
         buttons[0].textContent = "New Colors?";
@@ -70,8 +70,16 @@ function reset() {
         h1.style.backgroundColor = "rgb(28, 126, 156)";
         colorDisplay.style.backgroundColor = "rgb(28, 126, 156)";
     }
-    for(let ii = 0; ii < colors.length; ii++) {
-        squares[ii].style.backgroundColor = colors[ii];
+    displaySqaure();
+}
+function displaySqaure() {
+    for(let ii = 0; ii < squares.length; ii++) {
+        if(colors[ii]) {
+            squares[ii].style.display = "block";
+            squares[ii].style.backgroundColor = colors[ii];
+        } else {
+            squares[ii].style.display = "none";
+        }
     }
 }
 
@@ -81,28 +89,7 @@ for (let jj= 0; jj < mode.length; jj++) {
         mode[0].classList.remove("selected");
         mode[1].classList.remove("selected");
         e.currentTarget.classList.add("selected");
-
-        if (mode[jj].classList.contains("easy")) {
-            colors = randomColors(3);
-            pickedColor = pickColor();
-            colorDisplay.textContent = pickedColor;
-            messageResult.textContent = "";
-            for (let kk = 0; kk < squares.length; kk ++) {
-                if (kk >= 3) {
-                    squares[kk].style.display = "none";
-                } else {
-                    squares[kk].style.backgroundColor = colors[kk]
-                }
-            }
-        } else {
-            colors = randomColors(6);
-            pickedColor = pickColor();
-            colorDisplay.textContent = pickedColor;
-            messageResult.textContent = "";
-            for (let ll = 0; ll < colors.length; ll++){
-                squares[ll].style.display = "block";
-                squares[ll].style.backgroundColor = colors[ll];
-            }
-        }
+        reset();
+        displaySqaure();
     })
 }
