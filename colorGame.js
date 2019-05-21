@@ -4,8 +4,7 @@ let pickedColor = pickColor();
 const colorDisplay = document.getElementById("colorDisplayed");
 const messageResult = document.getElementById("result");
 const buttons = document.querySelectorAll("button");
-const easy = document.querySelector("#easyBtn");
-const hard = document.querySelector("#hardBtn");
+const mode = document.querySelectorAll(".mode");
 const h1 = document.querySelector("h1");
 
 colorDisplay.textContent = pickedColor;
@@ -58,10 +57,10 @@ function winColor(winColor) {
 //reset game
 function reset() {
     //checks current mode upon hitting play again
-    if (easy.classList.contains("selected")) {
-        colors = randomColors(3);
-    } else {
-        colors = randomColors(6);
+    for (let hh = 0; hh < mode.length; hh ++) {
+        if (mode[hh].classList.contains("easy") && mode[hh].classList.contains("selected")) {
+            colors = randomColors(3);
+        }
     }
     pickedColor = pickColor();
     buttons[0].textContent = "New Colors?";
@@ -71,36 +70,37 @@ function reset() {
     colorDisplay.style.backgroundColor = "rgb(28, 126, 156)";
     for(let ii = 0; ii < squares.length; ii++) {
         squares[ii].style.backgroundColor = colors[ii];
-    };
+    }
 }
 
+//button toggle easy/hard mode
+for (let jj= 0; jj < mode.length; jj++) {
+    mode[jj].addEventListener("click", (e) => {
+        mode[0].classList.remove("selected");
+        mode[1].classList.remove("selected");
+        e.currentTarget.classList.add("selected");
 
-easy.addEventListener("click", () => {
-    colors = randomColors(3);
-    pickedColor = pickColor();
-    colorDisplay.textContent = pickedColor;
-    easy.classList.add("selected");
-    hard.classList.remove("selected");
-    messageResult.textContent = "";
-    //removes last 3 squares
-    for(let mm = 0; mm < squares.length; mm++) {
-        if(mm >= 3){
-            document.querySelectorAll(".square")[mm].style.display = "none";
+        if (mode[jj].classList.contains("easy")) {
+            colors = randomColors(3);
+            pickedColor = pickColor();
+            colorDisplay.textContent = pickedColor;
+            messageResult.textContent = "";
+            for (let kk = 0; kk < squares.length; kk ++) {
+                if (kk >= 3) {
+                    squares[kk].style.display = "none";
+                } else {
+                    squares[kk].style.backgroundColor = colors[kk]
+                }
+            }
+        } else {
+            colors = randomColors(6);
+            pickedColor = pickColor();
+            colorDisplay.textContent = pickedColor;
+            messageResult.textContent = "";
+            for (let ll = 0; ll < colors.length; ll++){
+                squares[ll].style.display = "block";
+                squares[ll].style.backgroundColor = colors[ll];
+            }
         }
-        else {
-            squares[mm].style.backgroundColor = colors[mm];
-        }
-    }
-});
-hard.addEventListener("click", () => {
-    colors = randomColors(6);
-    pickedColor = pickColor();
-    colorDisplay.textContent = pickedColor;
-    hard.classList.add("selected");
-    easy.classList.remove("selected");
-    messageResult.textContent = "";
-    for(let nn = 0; nn < colors.length; nn++){
-        document.querySelectorAll(".square")[nn].style.display = "block";
-        squares[nn].style.backgroundColor = colors[nn];
-    }
-});
+    })
+}
