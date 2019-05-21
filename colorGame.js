@@ -60,15 +60,17 @@ function reset() {
     for (let hh = 0; hh < mode.length; hh ++) {
         if (mode[hh].classList.contains("easy") && mode[hh].classList.contains("selected")) {
             colors = randomColors(3);
+        } else if (mode[hh].classList.contains("hard") && mode[hh].classList.contains("selected")){
+            colors = randomColors(6);
         }
+        pickedColor = pickColor();
+        buttons[0].textContent = "New Colors?";
+        messageResult.textContent = "";
+        colorDisplay.textContent = pickedColor;
+        h1.style.backgroundColor = "rgb(28, 126, 156)";
+        colorDisplay.style.backgroundColor = "rgb(28, 126, 156)";
     }
-    pickedColor = pickColor();
-    buttons[0].textContent = "New Colors?";
-    messageResult.textContent = "";
-    colorDisplay.textContent = pickedColor;
-    h1.style.backgroundColor = "rgb(28, 126, 156)";
-    colorDisplay.style.backgroundColor = "rgb(28, 126, 156)";
-    for(let ii = 0; ii < squares.length; ii++) {
+    for(let ii = 0; ii < colors.length; ii++) {
         squares[ii].style.backgroundColor = colors[ii];
     }
 }
