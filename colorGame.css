@@ -1,4 +1,8 @@
-
+@media only screen and (max-width: 600px) {
+    .navbar {
+      display: flex
+    }
+}
 body {
     background-color: rgb(44, 44, 44);
     color: white;
@@ -29,7 +33,6 @@ h1 {
     font-weight: 1000;
     text-align: center;
     height: 28px;
-    display: flex;
 }
 #result {
     padding-top: 4px;
@@ -45,6 +48,10 @@ button {
     text-transform: uppercase;
     font-weight: 1000;
     font-size: inherit;
+}
+button:hover {
+    background-color: rgb(28, 126, 156);
+    color: rgb(207, 207, 207)
 }
 
 .square {
