@@ -48,10 +48,14 @@ button {
     text-transform: uppercase;
     font-weight: 1000;
     font-size: inherit;
+    -webkit-transition: all 2s ease-out;
+    -moz-transition: all 2s ease-out;
+    -o-transition: all 2s ease-out;
+    transition: all 2s ease-out;
 }
 button:hover {
     background-color: rgb(28, 126, 156);
-    color: rgb(207, 207, 207)
+    color: rgb(207, 207, 207);
 }
 
 .square {
@@ -61,6 +65,10 @@ button:hover {
     margin: 1.66%;
     float: left;
     border-radius: 10%;
+    -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
 }
 .container {
     margin: 0 auto;
