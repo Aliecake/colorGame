@@ -1,4 +1,4 @@
-let colors = randomColors(6);
+let colors = randomColors(n = 6);
 const squares = document.getElementsByClassName("square");
 let pickedColor = pickColor();
 const colorDisplay = document.getElementById("colorDisplayed");
@@ -55,7 +55,11 @@ function winColor(winColor) {
 }
 //reset game
 function reset() {
-    colors = randomColors(6);
+    if (easy.classList.contains("selected")) {
+        colors = randomColors(3);
+    } else {
+        colors = randomColors(6);
+    }
     pickedColor = pickColor();
     buttons[0].textContent = "New Colors?";
     messageResult.textContent = "";
@@ -81,6 +85,7 @@ easy.addEventListener("click", () => {
             document.querySelectorAll(".square")[mm].style.display = "none";
         }
         else {
+            console.log(colors[mm], squares[mm])
             squares[mm].style.backgroundColor = colors[mm];
         }
     }
