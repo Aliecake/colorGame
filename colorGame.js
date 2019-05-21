@@ -55,6 +55,7 @@ function winColor(winColor) {
 }
 //reset game
 function reset() {
+    //checks current mode upon hitting play again
     if (easy.classList.contains("selected")) {
         colors = randomColors(3);
     } else {
@@ -78,14 +79,12 @@ easy.addEventListener("click", () => {
     easy.classList.add("selected");
     hard.classList.remove("selected");
     messageResult.textContent = "";
-    //display 3 new squares from colors
     //removes last 3 squares
     for(let mm = 0; mm < squares.length; mm++) {
         if(mm >= 3){
             document.querySelectorAll(".square")[mm].style.display = "none";
         }
         else {
-            console.log(colors[mm], squares[mm])
             squares[mm].style.backgroundColor = colors[mm];
         }
     }
