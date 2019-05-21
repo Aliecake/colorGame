@@ -1,29 +1,34 @@
-let colors = randomColors(n = 6);
+let colors = [];
+let pickedColor;
 const squares = document.getElementsByClassName("square");
-let pickedColor = pickColor();
 const colorDisplay = document.getElementById("colorDisplayed");
 const messageResult = document.getElementById("result");
 const buttons = document.querySelectorAll("button");
 const mode = document.querySelectorAll(".mode");
 const h1 = document.querySelector("h1");
 
-colorDisplay.textContent = pickedColor;
+init();
+function init() {
+    reset();
+    modeButton();
+    setupSquares();
+}
 
-for(let ii = 0; ii < squares.length; ii++) {
-    squares[ii].style.backgroundColor = colors[ii];
+function setupSquares() {
+    for (let ii = 0; ii< squares.length; ii++) {
+        squares[ii].addEventListener("click", (e) => {
+            let clickedColor = e.currentTarget.style.backgroundColor;
 
-    squares[ii].addEventListener("click", (e) => {
-        let clickedColor = e.currentTarget.style.backgroundColor;
-
-        if (clickedColor === pickedColor) {
-            messageResult.textContent = "Correct";
-            buttons[0].textContent = "Play Again?";
-            winColor(pickedColor);
-        } else {
-            messageResult.textContent = "No";
-            e.currentTarget.style.backgroundColor = "rgb(44, 44, 44)";
-        }
-    });
+            if (clickedColor === pickedColor) {
+                messageResult.textContent = "Correct";
+                buttons[0].textContent = "Play Again?";
+                winColor(pickedColor);
+            } else {
+                messageResult.textContent = "No";
+                e.currentTarget.style.backgroundColor = "rgb(44, 44, 44)";
+            }
+        });
+    }
 }
 
 function pickColor() {
@@ -84,12 +89,14 @@ function displaySqaure() {
 }
 
 //button toggle easy/hard mode
-for (let jj= 0; jj < mode.length; jj++) {
-    mode[jj].addEventListener("click", (e) => {
-        mode[0].classList.remove("selected");
-        mode[1].classList.remove("selected");
-        e.currentTarget.classList.add("selected");
-        reset();
-        displaySqaure();
-    })
+function modeButton() {
+    for (let jj= 0; jj < mode.length; jj++) {
+        mode[jj].addEventListener("click", (e) => {
+            mode[0].classList.remove("selected");
+            mode[1].classList.remove("selected");
+            e.currentTarget.classList.add("selected");
+            reset();
+            displaySqaure();
+        })
+    }
 }
