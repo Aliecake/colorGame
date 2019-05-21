@@ -1,5 +1,4 @@
 let colors = randomColors(6);
-
 const squares = document.getElementsByClassName("square");
 let pickedColor = pickColor();
 const colorDisplay = document.getElementById("colorDisplayed");
@@ -9,6 +8,7 @@ const easy = document.querySelector("#easyBtn");
 const hard = document.querySelector("#hardBtn");
 
 colorDisplay.textContent = pickedColor;
+
 for(let ii = 0; ii < squares.length; ii++) {
     squares[ii].style.backgroundColor = colors[ii];
 
@@ -57,7 +57,10 @@ function winColor(winColor) {
 function reset() {
     colors = randomColors(6);
     pickedColor = pickColor();
+    buttons[0].textContent = "New Colors?";
+    messageResult.textContent = "";
     colorDisplay.textContent = pickedColor;
+    document.querySelector("h1").style.backgroundColor = "rgb(44, 44, 44)";
     for(let ii = 0; ii < squares.length; ii++) {
         squares[ii].style.backgroundColor = colors[ii];
     };
@@ -70,6 +73,7 @@ easy.addEventListener("click", () => {
     colorDisplay.textContent = pickedColor;
     easy.classList.add("selected");
     hard.classList.remove("selected");
+    messageResult.textContent = "";
     //display 3 new squares from colors
     //removes last 3 squares
     for(let mm = 0; mm < squares.length; mm++) {
@@ -87,7 +91,9 @@ hard.addEventListener("click", () => {
     colorDisplay.textContent = pickedColor;
     hard.classList.add("selected");
     easy.classList.remove("selected");
+    messageResult.textContent = "";
     for(let nn = 0; nn < colors.length; nn++){
         document.querySelectorAll(".square")[nn].style.display = "block";
+        squares[nn].style.backgroundColor = colors[nn];
     }
 });
