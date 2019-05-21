@@ -6,6 +6,7 @@ const messageResult = document.getElementById("result");
 const buttons = document.querySelectorAll("button");
 const easy = document.querySelector("#easyBtn");
 const hard = document.querySelector("#hardBtn");
+const h1 = document.querySelector("h1");
 
 colorDisplay.textContent = pickedColor;
 
@@ -16,11 +17,11 @@ for(let ii = 0; ii < squares.length; ii++) {
         let clickedColor = e.currentTarget.style.backgroundColor;
 
         if (clickedColor === pickedColor) {
-            messageResult.textContent = "Correct!";
+            messageResult.textContent = "Correct";
             buttons[0].textContent = "Play Again?";
             winColor(pickedColor);
         } else {
-            messageResult.textContent = "Try Again!";
+            messageResult.textContent = "No";
             e.currentTarget.style.backgroundColor = "rgb(44, 44, 44)";
         }
     });
@@ -48,7 +49,8 @@ function randomNum() {
 
 //changes color of all squares
 function winColor(winColor) {
-    document.querySelector("h1").style.backgroundColor = pickedColor;
+    h1.style.backgroundColor = pickedColor;
+    colorDisplay.style.backgroundColor = pickedColor;
     for (let jj = 0; jj < squares.length; jj++) {
         squares[jj].style.backgroundColor = winColor;
     }
@@ -65,7 +67,8 @@ function reset() {
     buttons[0].textContent = "New Colors?";
     messageResult.textContent = "";
     colorDisplay.textContent = pickedColor;
-    document.querySelector("h1").style.backgroundColor = "rgb(44, 44, 44)";
+    h1.style.backgroundColor = "rgb(28, 126, 156)";
+    colorDisplay.style.backgroundColor = "rgb(28, 126, 156)";
     for(let ii = 0; ii < squares.length; ii++) {
         squares[ii].style.backgroundColor = colors[ii];
     };
